@@ -1,7 +1,8 @@
 const ANGLES_PER_SECOND = 360 / 60
 const ANGLES_PER_MINUTE = 360 / 60
-const secondsHand = document.querySelector('.seconds-hand')
-const minutesHand = document.querySelector('.minutes-hand')
+const secondsHand = document.querySelector('.clock .seconds-hand')
+const minutesHand = document.querySelector('.clock .minutes-hand')
+const clockFace = document.querySelector('.clock .face')
 
 let tickId = 0
 let secondsHandAngle = 90
@@ -9,6 +10,23 @@ let minutesHandAngle = 90
 let secondsElapsed = 0
 let minutesElapsed = 0
 let lastTimestamp = 0
+
+const setupClockFace = () => {
+    let angle = 90
+
+    for (let pos = 0; pos <= 60; pos++) {
+        const bar = document.createElement('div')
+        bar.classList.add('face-bar')
+
+        if (pos % 5 === 0) {
+            bar.classList.add('face-bar--rounded')
+        }
+
+        bar.style.transform = `rotate(${angle + 90}deg)`
+        clockFace.append(bar)
+        angle += ANGLES_PER_SECOND
+    }
+}
 
 const tick = (timestamp) => {
     if (!lastTimestamp || timestamp - lastTimestamp >= 1000) {
@@ -29,5 +47,7 @@ const tick = (timestamp) => {
 
     tickId = requestAnimationFrame(tick)
 }
+
+setupClockFace()
 
 tickId = requestAnimationFrame(tick)
