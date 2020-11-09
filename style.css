@@ -20,14 +20,48 @@
     border-radius: 50%;
 }
 
-.minutes-bar {
+.minutes-hand {
     display: block;
     position: absolute;
-    top: calc(50% - 8px);
-    background-color: #2F2D2E;
-    height: 16px;
+    top: calc(50% - 7px);
+    background: linear-gradient(90deg, transparent 6%, #2F2D2E 6%, 60%, transparent 60%);
+    height: 14px;
     width: 100%;
     transform: rotate(90deg);
 
     transition: all 200ms ease-in-out;
+}
+
+.seconds-hand {
+    display: block;
+    position: absolute;
+    top: calc(50% - 1.5px);
+    background: linear-gradient(90deg, transparent 6%, red 6%, 60%, transparent 60%);
+    height: 3px;
+    width: 100%;
+    transform: rotate(90deg);
+
+    transition: all 200ms ease-in-out;
+}
+
+.central-major-pin {
+    display: block;
+    position: absolute;
+    top: calc(50% - 12px);
+    right: calc(50% - 12px);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #2F2D2E;
+}
+
+.central-minor-pin {
+    display: block;
+    position: absolute;
+    top: calc(50% - 8px);
+    right: calc(50% - 8px);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: red;
 }
