@@ -9,12 +9,28 @@ const clockFace = document.querySelector('.clock .face')
 let tickId = 0
 let secondsElapsed = 0
 let minutesElapsed = 0
-let hoursElapsed = 1
-let secondsHandAngle = 90 + secondsElapsed * ANGLES_PER_SECOND
-let minutesHandAngle = 90 + minutesElapsed * ANGLES_PER_MINUTE
-let hoursHandAngle = 90 + hoursElapsed * ANGLES_PER_HOUR
+let hoursElapsed = 0
+let secondsHandAngle = 90
+let minutesHandAngle = 90
+let hoursHandAngle = 90
 
 let lastTimestamp = 0
+
+const setTime = () => {
+    const now = new Date()
+
+    secondsElapsed = now.getSeconds()
+    minutesElapsed = now.getMinutes()
+    hoursElapsed = now.getHours() 
+
+    if (hoursElapsed >= 12) {
+        hoursElapsed -= 12
+    }
+
+    secondsHandAngle = 90 + secondsElapsed * ANGLES_PER_SECOND
+    minutesHandAngle = 90 + minutesElapsed * ANGLES_PER_MINUTE
+    hoursHandAngle = 90 + hoursElapsed * ANGLES_PER_HOUR
+}
 
 const placeClockHands = () => {
     secondsHand.style.transform = `rotate(${secondsHandAngle}deg)`
@@ -41,26 +57,30 @@ const setupClockFace = () => {
     }
 }
 
+const printTime = () => {
+    console.log(`${hoursElapsed}:${String(minutesElapsed).padStart(2, '0')}:${String(secondsElapsed).padStart(2, '0')}`)
+}
+
 const tick = (timestamp) => {
     if (!lastTimestamp || timestamp - lastTimestamp >= 1000) {
         lastTimestamp = timestamp
         secondsHandAngle += ANGLES_PER_SECOND
         secondsElapsed += 1
-        console.log(`${secondsElapsed}s`)
+        printTime()
         secondsHand.style.transform = `rotate(${secondsHandAngle}deg)`
 
         if (secondsElapsed === 60) {
             secondsElapsed = 0
             minutesHandAngle += ANGLES_PER_MINUTE
             minutesElapsed += 1
-            console.log(`${minutesElapsed}m`)
+            printTime()
             minutesHand.style.transform = `rotate(${minutesHandAngle}deg)`
 
             if (minutesElapsed === 60) {
                 minutesElapsed = 0
                 hoursHandAngle += ANGLES_PER_HOUR
                 hoursElapsed += 1
-                console.log(`${hoursElapsed}m`)
+                printTime()
                 hoursHand.style.transform = `rotate(${hoursHandAngle}deg)`
 
                 if (hoursElapsed === 12) {
@@ -75,6 +95,7 @@ const tick = (timestamp) => {
     tickId = requestAnimationFrame(tick)
 }
 
+setTime()
 setupClockFace()
 placeClockHands()
 
