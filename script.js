@@ -5,6 +5,7 @@ const secondsHand = document.querySelector('.clock .seconds-hand')
 const minutesHand = document.querySelector('.clock .minutes-hand')
 const hoursHand = document.querySelector('.clock .hours-hand')
 const clockFace = document.querySelector('.clock .face')
+const timeLabel = document.querySelector('.clock .face .time-label')
 
 let tickId = 0
 let secondsElapsed = 0
@@ -57,30 +58,29 @@ const setupClockFace = () => {
     }
 }
 
-const printTime = () => {
-    console.log(`${hoursElapsed}:${String(minutesElapsed).padStart(2, '0')}:${String(secondsElapsed).padStart(2, '0')}`)
-}
+const getCurrentTimeFormatted = () => 
+    `${hoursElapsed}:${String(minutesElapsed).padStart(2, '0')}:${String(secondsElapsed).padStart(2, '0')}`
 
 const tick = (timestamp) => {
     if (!lastTimestamp || timestamp - lastTimestamp >= 1000) {
         lastTimestamp = timestamp
         secondsHandAngle += ANGLES_PER_SECOND
         secondsElapsed += 1
-        printTime()
+
         secondsHand.style.transform = `rotate(${secondsHandAngle}deg)`
 
         if (secondsElapsed === 60) {
             secondsElapsed = 0
             minutesHandAngle += ANGLES_PER_MINUTE
             minutesElapsed += 1
-            printTime()
+            
             minutesHand.style.transform = `rotate(${minutesHandAngle}deg)`
 
             if (minutesElapsed === 60) {
                 minutesElapsed = 0
                 hoursHandAngle += ANGLES_PER_HOUR
                 hoursElapsed += 1
-                printTime()
+
                 hoursHand.style.transform = `rotate(${hoursHandAngle}deg)`
 
                 if (hoursElapsed === 12) {
@@ -90,6 +90,8 @@ const tick = (timestamp) => {
                 }
             }
         }
+
+        timeLabel.textContent = getCurrentTimeFormatted()
     }
 
     tickId = requestAnimationFrame(tick)

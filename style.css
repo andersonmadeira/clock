@@ -96,3 +96,21 @@
     height: 8px;
     background: linear-gradient(90deg, transparent 95%, black 95%);
 }
+
+.time-display {
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: calc(var(--clock-radius) / 2);
+}
+
+.time-label {
+    display: inline-block;
+    font-size: 12px;
+    font-family: monospace;
+    padding: 2px 5px;
+    border: 1px solid #2F2D2E77;
+    box-shadow: inset 0 0 5px -2px #2F2D2E;
+    border-radius: 2px;
+}
