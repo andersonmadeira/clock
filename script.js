@@ -95,8 +95,19 @@ const tick = (timestamp) => {
     tickId = requestAnimationFrame(tick)
 }
 
-setTime()
-setupClockFace()
-placeClockHands()
+const updateClock = () => {
+    setTime()
+}
 
-tickId = requestAnimationFrame(tick)
+
+const init = () => {
+    updateClock()
+    setupClockFace()
+    placeClockHands()
+
+    window.addEventListener('focus', () => updateClock())
+
+    tickId = requestAnimationFrame(tick)
+}
+
+init()
