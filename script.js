@@ -42,7 +42,7 @@ const placeClockHands = () => {
 const setupClockFace = () => {
     let angle = 90
 
-    for (let pos = 0; pos <= 60; pos++) {
+    for (let pos = 0; pos <= 29; pos++) {
         const bar = document.createElement('div')
         
         bar.classList.add('face-bar')
@@ -51,7 +51,7 @@ const setupClockFace = () => {
             bar.classList.add('face-bar--big')
         }
 
-        bar.style.transform = `rotate(${angle + 90}deg)`
+        bar.style.transform = `rotate(${angle}deg)`
         clockFace.append(bar)
 
         angle += ANGLES_PER_SECOND
