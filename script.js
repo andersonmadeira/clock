@@ -58,8 +58,7 @@ const setupClockFace = () => {
     }
 }
 
-const getCurrentTimeFormatted = () => 
-    `${hoursElapsed}:${String(minutesElapsed).padStart(2, '0')}:${String(secondsElapsed).padStart(2, '0')}`
+const getCurrentTimeFormatted = () => new Date().toLocaleTimeString()
 
 const tick = (timestamp) => {
     if (!lastTimestamp || timestamp - lastTimestamp >= 1000) {
