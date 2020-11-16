@@ -85,7 +85,6 @@ const tick = (timestamp) => {
                 if (hoursElapsed === 12) {
                     hoursElapsed = 0
                     hoursHandAngle = 90
-                    console.log(`reseting clock`)
                 }
             }
         }
@@ -98,13 +97,13 @@ const tick = (timestamp) => {
 
 const updateClock = () => {
     setTime()
+    placeClockHands()
 }
 
 
 const init = () => {
-    updateClock()
     setupClockFace()
-    placeClockHands()
+    updateClock()    
 
     window.addEventListener('focus', () => updateClock())
 
