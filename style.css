@@ -1,110 +1,141 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .clock-wrapper {
-    display: flex;
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  position: relative;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
 }
 
 .clock {
-    --clock-radius: 250px;
-    position: relative;
-    display: inline-block;
-    width: calc(2 * var(--clock-radius));
-    height: calc(2 * var(--clock-radius));
-    background-color: #F5F7FB;
-    box-shadow: inset 7px 7px 25px 4px #cacaca, 0px 0px 1px 10px #c1c1c1;
-    border-radius: 50%;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f7fb;
+  box-shadow: inset 7px 7px 25px 4px #cacaca, 0px 0px 1px 5px #c1c1c1;
+  border-radius: 50%;
 }
 
 .hours-hand,
 .minutes-hand,
 .seconds-hand {
-    position: absolute;
-    width: 100%;
-    transition: all 200ms ease-in-out;
+  position: absolute;
+  width: 100%;
+  transition: all 200ms ease-in-out;
 }
 
 .hours-hand {
-    top: calc(50% - 7px);
-    background: linear-gradient(90deg, transparent 15%, #2F2D2E 15%, 60%, transparent 60%);
-    height: 14px;    
+  top: calc(50% - 4px);
+  background: linear-gradient(
+    90deg,
+    transparent 15%,
+    #2f2d2e 15%,
+    60%,
+    transparent 60%
+  );
+  height: 8px;
 }
 
 .minutes-hand {
-    top: calc(50% - 7px);
-    background: linear-gradient(90deg, transparent 6%, #2F2D2E 6%, 60%, transparent 60%);
-    height: 14px;
+  top: calc(50% - 4px);
+  background: linear-gradient(
+    90deg,
+    transparent 6%,
+    #2f2d2e 6%,
+    60%,
+    transparent 60%
+  );
+  height: 8px;
 }
 
 .seconds-hand {
-    top: calc(50% - 1.5px);
-    background: linear-gradient(90deg, transparent 6%, red 6%, 60%, transparent 60%);
-    height: 3px;
+  top: calc(50% - 1.5px);
+  background: linear-gradient(
+    90deg,
+    transparent 6%,
+    red 6%,
+    60%,
+    transparent 60%
+  );
+  height: 3px;
 }
 
 .central-major-pin,
 .central-minor-pin {
-    display: block;
-    position: absolute;
-    border-radius: 50%;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
 }
 
 .central-major-pin {
-    top: calc(50% - 12px);
-    right: calc(50% - 12px);
-    width: 24px;
-    height: 24px;
-    background: #2F2D2E;
+  top: calc(50% - 7px);
+  right: calc(50% - 7px);
+  width: 14px;
+  height: 14px;
+  background: #2f2d2e;
 }
 
 .central-minor-pin {
-    top: calc(50% - 8px);
-    right: calc(50% - 8px);
-    width: 16px;
-    height: 16px;
-    background: red;
+  top: calc(50% - 4px);
+  right: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  background: red;
 }
 
 .face {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .face-bar {
-    position: absolute;
-    top: calc(50% - 0.5px);
-    background: linear-gradient(90deg, red 3%, transparent 3%, transparent 97%, red 97%);
-    height: 1px;
-    width: 100%;
+  position: absolute;
+  top: calc(50% - 0.5px);
+  background: linear-gradient(
+    90deg,
+    red 3%,
+    transparent 3%,
+    transparent 97%,
+    red 97%
+  );
+  height: 1px;
+  width: 100%;
 }
 
 .face-bar--big {
-    top: calc(50% - 4px);
-    height: 8px;
-    background: linear-gradient(90deg, black 5%, transparent 5%, transparent 95%, black 95%)
+  top: calc(50% - 2px);
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    black 5%,
+    transparent 5%,
+    transparent 95%,
+    black 95%
+  );
 }
 
 .time-display {
-    display: block;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    top: calc(var(--clock-radius) / 2);
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: calc(var(--clock-radius) / 2);
 }
 
 .time-label {
-    display: inline-block;
-    font-size: 12px;
-    font-family: monospace;
-    padding: 2px 5px;
-    border: 1px solid #2F2D2E77;
-    box-shadow: inset 0 0 5px -2px #2F2D2E;
-    border-radius: 2px;
+  display: inline-block;
+  font-size: 12px;
+  font-family: monospace;
+  padding: 2px 5px;
+  border: 1px solid #2f2d2e77;
+  box-shadow: inset 0 0 5px -2px #2f2d2e;
+  border-radius: 2px;
 }
